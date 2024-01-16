@@ -6,7 +6,7 @@ interface Props{
   href: string;
   children: string;
 }
-const HybridLink = ({ href, children}: Props) => {
+const Link = ({ href, children}: Props) => {
   return (
       <NextLink href={href} passHref legacyBehavior>
         <RadixLink>{children}</RadixLink>
@@ -14,4 +14,4 @@ const HybridLink = ({ href, children}: Props) => {
   );
 };
 
-export default HybridLink;
+export default Link;
