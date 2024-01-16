@@ -20,8 +20,8 @@ export const metadata: Metadata = {
 export default function RootLayout({children}: Readonly<{ children: React.ReactNode }>) {
   return (
       <html lang="en">
-      <body className={inter.className}>
-      <Theme appearance="light" accentColor="iris">
+      <body className={`${inter.variable}`}>
+      <Theme appearance="dark" accentColor="iris">
         <NavBar />
         <main className="p-5">{children}</main>
 
