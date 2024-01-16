@@ -13,16 +13,16 @@ const NavBar = () => {
   ]
   return (
       <nav className="flex space-x-6 border-b border-slate-800 mb-5 px-5 h-14 items-center">
-        <Link href="/"><IoBug className="text-slate-300 hover:text-slate-50 transition-colors" /></Link>
+        <Link href="/"><IoBug className="text-slate-800 hover:text-slate-500 transition-colors" /></Link>
         <ul className="flex space-x-5 ">
           {links.map(link =>
             <Link
                 key={link.href}
                 href={link.href}
                 className={classnames({
-                  'text-slate-200': link.href === currentPage,
+                  'text-slate-900': link.href === currentPage,
                   'text-slate-500': link.href !== currentPage,
-                  'hover:text-slate-300 transition-colors': true,
+                  'hover:text-slate-700 transition-colors': true,
                 })}
             >{link.label}</Link>
           )}

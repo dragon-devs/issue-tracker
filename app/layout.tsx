@@ -21,8 +21,7 @@ export default function RootLayout({children}: Readonly<{ children: React.ReactN
   return (
       <html lang="en">
       <body className={inter.className}>
-      <Theme appearance="dark" accentColor="iris">
-        <NavBar/>
+      <Theme appearance="light" accentColor="violet">        <NavBar/>
         <main className="p-5">{children}</main>
 
         {/*<ThemePanel />*/}
