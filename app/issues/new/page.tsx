@@ -26,6 +26,16 @@ const NewIssuePage = () => {
   const [success, setSuccess] = useState('');
   const [isSubmiting, setIsSubmiting] = useState(false);
 
+  const onSubmit = handleSubmit(async (data) => {
+    try {
+      setIsSubmiting(true)
+      await axios.post('/api/issues', data);
+      setSuccess('issue is successfully created.');
+    } catch (error) {
+      setIsSubmiting(false)
+      setError('An unexpected error occurred.');
+    }
+  })
   return (
       <div className="max-w-xl ">
         {success && <Callout.Root color="green" className="mb-5">
@@ -37,19 +47,9 @@ const NewIssuePage = () => {
           <Callout.Icon><MdError/></Callout.Icon>
           <Callout.Text>{error}</Callout.Text>
         </Callout.Root>}
-
         <form
             className="space-y-3"
-            onSubmit={handleSubmit(async (data) => {
-              try {
-                setIsSubmiting(true)
-                await axios.post('/api/issues', data);
-                setSuccess('issue is successfully created.');
-              } catch (error) {
-                setIsSubmiting(false)
-                setError('An unexpected error occurred.');
-              }
-            })}
+            onSubmit={onSubmit}
         >
           <TextField.Root>
             <TextField.Input placeholder="Title" {...register('title')}/>
@@ -61,7 +61,7 @@ const NewIssuePage = () => {
               render={({field}) => <SimpleMDE placeholder="Description" {...field}/>}
           />
           <ErrorMessage>{errors.description?.message}</ErrorMessage>
-          <Button disabled={isSubmiting}>Submit New Issue {isSubmiting && <Spinner />}</Button>
+          <Button disabled={isSubmiting}>Submit New Issue {isSubmiting && <Spinner/>}</Button>
         </form>
       </div>
 
