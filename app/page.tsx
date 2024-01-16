@@ -1,9 +1,10 @@
 import Image from 'next/image'
+import { Button } from "@radix-ui/themes";
 
 export default function Home() {
   return (
-    <main className="pl-5">
-      <p className="font-bold text-xl">DRAGON DEVS</p>
-    </main>
+    <div className="pl-5">
+      <Button>New Issue</Button>
+    </div>
   )
 }
