@@ -24,7 +24,6 @@ export default function RootLayout({children}: Readonly<{ children: React.ReactN
       <Theme appearance="dark" accentColor="iris">
         <NavBar />
         <main className="p-5">{children}</main>
-
         {/*<ThemePanel/>*/}
       </Theme>
       </body>

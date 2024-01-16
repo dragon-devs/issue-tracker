@@ -1,10 +1,11 @@
-import { Button } from "@radix-ui/themes";
-import Link from "next/link";
+import {Button} from "@radix-ui/themes";
+
 
 export default function Home() {
+
   return (
-    <div>
-      Dashboard
-    </div>
+      <div>
+        Dashboard
+      </div>
   )
 }
