@@ -6,11 +6,11 @@ import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css'
 
 const LoadingIssuesPage = () => {
-  const issues = [1,2,3,4,5]
+  const issues = [1, 2, 3, 4, 5]
 
   return (
       <div>
-        <IssueActions />
+        <IssueActions/>
         <Table.Root variant="surface">
           <Table.Header>
             <Table.Row>
@@ -23,16 +23,16 @@ const LoadingIssuesPage = () => {
             {issues.map(issue => (
                 <Table.Row key={issue}>
                   <Table.Cell>
-                    <Skeleton  />
+                    <Skeleton highlightColor="gray" baseColor="#303030" width="15rem"/>
                     <div className="block md:hidden">
-                      <Skeleton  />
+                      <Skeleton highlightColor="gray" baseColor="#303030" width="15rem"/>
                     </div>
                   </Table.Cell>
                   <Table.Cell className="hidden md:table-cell">
-                    <Skeleton  />
+                    <Skeleton highlightColor="gray" baseColor="#303030" width="15rem"/>
                   </Table.Cell>
                   <Table.Cell className="hidden md:table-cell">
-                    <Skeleton  />
+                    <Skeleton highlightColor="gray" baseColor="#303030" width="15rem"/>
                   </Table.Cell>
                 </Table.Row>
             ))}

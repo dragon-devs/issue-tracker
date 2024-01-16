@@ -4,6 +4,7 @@ import prisma from "@/prisma/client";
 import IssueStatusBadge from "@/app/components/IssueStatusBadge";
 import IssueActions from "@/app/issues/IssueActions";
 import HybridLink from "@/app/components/Link";
+import delay from "delay";
 
 const IssuesPage = async () => {
   const issues = await prisma.issue.findMany();
