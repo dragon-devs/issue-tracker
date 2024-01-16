@@ -19,7 +19,7 @@ const prisma = globalThis.prisma ?? prismaClientSingleton();
 
 if (process.env.NODE_ENV !== 'production') {
   if (!globalThis.prisma) {
-    globalThis.prisma = prisma();
+    globalThis.prisma = prisma;
   }
 }
 
