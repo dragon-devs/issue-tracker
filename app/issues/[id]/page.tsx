@@ -3,7 +3,8 @@ import React from 'react';
 import {notFound} from "next/navigation";
 import {Card, Flex, Heading, Text} from "@radix-ui/themes";
 import IssueStatusBadge from "@/app/components/IssueStatusBadge";
-
+import ReactMarkdown from 'react-markdown';
+import {BiColor} from "react-icons/bi";
 
 interface Props {
   params: { id: string }
@@ -20,11 +21,13 @@ const IssueDetailPage = async ({params}: Props) => {
   return (
       <div>
         <Heading>{issue.title}</Heading>
-        <Flex className="space-x-3" my="3">
+        <Flex className="space-x-6" my="3">
           <IssueStatusBadge status={issue.status}/>
           <Text>{issue.createdAt.toDateString()}</Text>
         </Flex>
-        <Card>{issue.description}</Card>
+        <Card mt="4" className="prose dark:prose-h1:text-white dark:prose-strong:text-white text-white">
+          <ReactMarkdown>{issue.description}</ReactMarkdown>
+        </Card>
       </div>
   );
 };
