@@ -38,13 +38,12 @@ const IssueForm = ({issue}: { issue?: Issue }) => {
       if (issue){
         await axios.patch('/api/issues/' + issue.id, data)
         setSuccess('issue is updated created.');
-        router.push('/issues')
       } else{
         await axios.post('/api/issues', data);
         setSuccess('issue is successfully created.');
-        router.push('/issues')
       }
-
+      router.push('/issues')
+      router.refresh()
       setIsSubmiting(false)
     } catch (error) {
       setIsSubmiting(false)

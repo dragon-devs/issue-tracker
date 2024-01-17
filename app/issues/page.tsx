@@ -40,4 +40,8 @@ const IssuesPage = async () => {
   );
 };
 
+// this page is now rendering dynamically.
+export const dynamic = 'force-dynamic'
+
+// export const revalidate = 60; // refresh every 60 seconds
 export default IssuesPage;
