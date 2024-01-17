@@ -35,6 +35,7 @@ const NewIssuePage = () => {
       setIsSubmiting(true)
       await axios.post('/api/issues', data);
       setSuccess('issue is successfully created.');
+      setIsSubmiting(false)
     } catch (error) {
       setIsSubmiting(false)
       setError('An unexpected error occurred.');
