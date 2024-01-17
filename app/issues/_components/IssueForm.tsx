@@ -8,7 +8,7 @@ import {useRouter} from "next/navigation";
 import {useState} from "react";
 import {MdCheckCircle, MdError} from "react-icons/md";
 import {zodResolver} from "@hookform/resolvers/zod";
-import {createIssueSchema} from "@/app/validationSchema";
+import {issueSchema} from "@/app/validationSchema";
 import {z} from 'zod';
 import ErrorMessage from "@/app/components/ErrorMessage";
 import Spinner from "@/app/components/Spinner";
@@ -21,12 +21,12 @@ const SimpleMDE = dynamic(
 )
 
 // getting the values from the zod validation
-type IssueFormData = z.infer<typeof createIssueSchema>
+type IssueFormData = z.infer<typeof issueSchema>
 
-const IssueForm = ({issue}: {issue?: Issue}) => {
+const IssueForm = ({issue}: { issue?: Issue }) => {
   const router = useRouter();
   const {register, control, handleSubmit, formState: {errors}} = useForm<IssueFormData>({
-    resolver: zodResolver(createIssueSchema)
+    resolver: zodResolver(issueSchema)
   });
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
@@ -35,8 +35,16 @@ const IssueForm = ({issue}: {issue?: Issue}) => {
   const onSubmit = handleSubmit(async (data) => {
     try {
       setIsSubmiting(true)
-      await axios.post('/api/issues', data);
-      setSuccess('issue is successfully created.');
+      if (issue){
+        await axios.patch('/api/issues/' + issue.id, data)
+        setSuccess('issue is updated created.');
+        router.push('/issues')
+      } else{
+        await axios.post('/api/issues', data);
+        setSuccess('issue is successfully created.');
+        router.push('/issues')
+      }
+
       setIsSubmiting(false)
     } catch (error) {
       setIsSubmiting(false)
@@ -69,7 +77,10 @@ const IssueForm = ({issue}: {issue?: Issue}) => {
               render={({field}) => <SimpleMDE placeholder="Description" {...field}/>}
           />
           <ErrorMessage>{errors.description?.message}</ErrorMessage>
-          <Button disabled={isSubmiting}>Submit New Issue {isSubmiting && <Spinner/>}</Button>
+          <Button disabled={isSubmiting}>
+            {issue ? 'Update Issue' : 'Submit New Issue'}{' '}
+            {isSubmiting && <Spinner/>}
+          </Button>
         </form>
       </div>
 
