@@ -1,11 +1,12 @@
 'use client';
 
 import React, {useState} from 'react';
-import {AlertDialog, Button, Flex} from "@radix-ui/themes";
-import {MdDeleteForever} from "react-icons/md";
 import axios from "axios";
 import {useRouter} from "next/navigation";
 import {Spinner} from "@/app/components";
+import {TrashIcon} from "@radix-ui/react-icons";
+import {Button,AlertDialog, Flex} from "@radix-ui/themes";
+
 
 const DeleteIssueButton = ({issueId}: { issueId: number }) => {
   const router = useRouter();
@@ -27,7 +28,7 @@ const DeleteIssueButton = ({issueId}: { issueId: number }) => {
         <AlertDialog.Root>
           <AlertDialog.Trigger>
             <Button color="red" disabled={deleting}>
-              <MdDeleteForever size="18"/>
+              <TrashIcon />
               Delete Issue
               {deleting && <Spinner />}
             </Button>
