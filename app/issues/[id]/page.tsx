@@ -4,7 +4,7 @@ import {notFound} from "next/navigation";
 import {Box, Flex, Grid} from "@radix-ui/themes";
 import EditIssueButton from "@/app/issues/[id]/EditIssueButton";
 import IssueDetails from "@/app/issues/[id]/IssueDetails";
-import DeleteIssueButton from "@/app/issues/[id]/edit/DeleteIssueButton";
+import DeleteIssueButton from "@/app/issues/[id]/DeleteIssueButton";
 
 interface Props {
   params: { id: string }
@@ -24,7 +24,7 @@ const IssueDetailPage = async ({params}: Props) => {
           <IssueDetails issue={issue}/>
         </Box>
         <Box>
-          <Flex direction="column" gap="4">
+          <Flex className="w-auto" direction="column" gap="4">
             <EditIssueButton issueId={issue.id}/>
             <DeleteIssueButton issueId={issue.id}/>
           </Flex>

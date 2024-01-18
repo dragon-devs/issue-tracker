@@ -1,5 +1,5 @@
 import React from 'react';
-import IssueActions from "@/app/issues/IssueActions";
+import IssueActions from "@/app/issues/list/IssueActions";
 import {Table} from "@radix-ui/themes";
 import {Skeleton} from "@/app/components";
 

@@ -1,14 +1,16 @@
 import React from 'react';
 import {Pencil2Icon} from "@radix-ui/react-icons";
 import Link from "next/link";
-import {Button} from "@radix-ui/themes";
+import {Box, Button} from "@radix-ui/themes";
 
-const EditIssueButton = ({issueId}: {issueId: number}) => {
+const EditIssueButton = ({issueId}: { issueId: number }) => {
   return (
-      <Button>
-        <Pencil2Icon/>
-        <Link href={`/issues/${issueId}/edit`}>Edit Issue</Link>
-      </Button>
+        <Link href={`/issues/edit/${issueId}`}>
+          <Button className="w-[100%]">
+            <Pencil2Icon/>
+            Edit Issue
+          </Button>
+        </Link>
   );
 };
 
