@@ -9,7 +9,7 @@ const IssuesPage = async () => {
   return (
       <div>
         <IssueActions/>
-        <Table.Root className="dark:bg-sky-600" variant="surface">
+        <Table.Root variant="surface">
           <Table.Header>
             <Table.Row>
               <Table.ColumnHeaderCell>Issue</Table.ColumnHeaderCell>

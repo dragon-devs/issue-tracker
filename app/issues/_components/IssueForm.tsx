@@ -31,7 +31,7 @@ const IssueForm = ({issue}: { issue?: Issue }) => {
       setIsSubmiting(true)
       if (issue){
         await axios.patch('/api/issues/' + issue.id, data)
-        setSuccess('issue is updated created.');
+        setSuccess('issue is successfully updated.');
       } else{
         await axios.post('/api/issues', data);
         setSuccess('issue is successfully created.');
