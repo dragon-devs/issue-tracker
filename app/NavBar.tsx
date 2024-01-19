@@ -52,10 +52,10 @@ const NavLinks = () => {
 const AuthStatus = () => {
   const {status, data: session} = useSession();
 
-  if (status === 'loading') return <Skeleton highlightColor="gray" baseColor="#303030"   width="2.5rem"/>;
+  if (status === 'loading') return <Skeleton highlightColor="gray" baseColor="#303030" height="1.75rem" width="2.2rem"/>;
 
   if (status === 'unauthenticated')
-    return <Link href="/api/auth/signin" className="nav-link">Login</Link>
+    return <Link href="/api/auth/signin" className="nav-link py-1">Login</Link>
 
   return (
       <Box>

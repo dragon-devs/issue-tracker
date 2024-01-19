@@ -13,6 +13,7 @@ import ErrorMessage from "@/app/components/ErrorMessage";
 import Spinner from "@/app/components/Spinner";
 import {Issue} from "@prisma/client";
 import SimpleMDE from 'react-simplemde-editor';
+import toast,{Toaster} from "react-hot-toast";
 
 // getting the values from the zod validation
 type IssueFormData = z.infer<typeof issueSchema>
@@ -31,17 +32,18 @@ const IssueForm = ({issue}: { issue?: Issue }) => {
       setIsSubmiting(true)
       if (issue){
         await axios.patch('/api/issues/' + issue.id, data)
-        setSuccess('issue is successfully updated.');
+        toast.success('issue is successfully updated.');
       } else{
         await axios.post('/api/issues', data);
-        setSuccess('issue is successfully created.');
+        localStorage.setItem('successMessage', 'Issue is successfully created.');
       }
+
       router.push('/issues/list')
       router.refresh()
       setIsSubmiting(false)
     } catch (error) {
       setIsSubmiting(false)
-      setError('An unexpected error occurred.');
+      toast.error('An unexpected error occurred.');
     }
   })
   return (
@@ -75,6 +77,7 @@ const IssueForm = ({issue}: { issue?: Issue }) => {
             {isSubmiting && <Spinner/>}
           </Button>
         </form>
+        <Toaster />
       </div>
 
   );
