@@ -6,6 +6,7 @@ import {usePathname} from "next/navigation";
 import classnames from 'classnames';
 import {Avatar, Box, Button, Container, DropdownMenu, Flex, Text} from "@radix-ui/themes";
 import {useSession} from "next-auth/react";
+import {Skeleton} from "@/app/components";
 
 const NavBar = () => {
 
@@ -51,7 +52,7 @@ const NavLinks = () => {
 const AuthStatus = () => {
   const {status, data: session} = useSession();
 
-  if (status === 'loading') return null;
+  if (status === 'loading') return <Skeleton highlightColor="gray" baseColor="#303030"   width="2.5rem"/>;
 
   if (status === 'unauthenticated')
     return <Link href="/api/auth/signin" className="nav-link">Login</Link>
