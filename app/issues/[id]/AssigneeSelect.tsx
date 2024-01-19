@@ -6,21 +6,23 @@ import axios from "axios";
 import {useQuery} from "@tanstack/react-query";
 import {Skeleton} from "@/app/components";
 
-const AssigneeSelect = ({ issue }: { issue: Issue}) => {
+const AssigneeSelect = ({issue}: { issue: Issue }) => {
   const {data: users, error, isLoading} = useQuery<User[]>({
     queryKey: ['users'],
     queryFn: () => axios.get('/api/users').then(res => res.data),
     staleTime: 60 * 1000, // 60s
     retry: 3
   });
-  if (isLoading) return <Skeleton />
+  if (isLoading) return <Skeleton/>
   if (error) return null;
 
   return (
-      <Select.Root onValueChange={(userId) => {
-        axios.patch('/api/issues/' + issue.id,
-            { assignedToUserId: userId || null})
-      }}>
+      <Select.Root
+          defaultValue={issue.assignedToUserId || null!}
+          onValueChange={(userId) => {
+            axios.patch('/api/issues/' + issue.id,
+                {assignedToUserId: userId || null})
+          }}>
         <Select.Trigger placeholder="Assign..."/>
         <Select.Content>
           <Select.Group>
