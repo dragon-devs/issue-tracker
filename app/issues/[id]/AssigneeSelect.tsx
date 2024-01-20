@@ -1,5 +1,5 @@
 'use client'
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {Select} from "@radix-ui/themes";
 import {Issue, User} from '@prisma/client';
 import axios from "axios";
@@ -8,21 +8,12 @@ import {Skeleton} from "@/app/components";
 import toast, {Toaster} from "react-hot-toast";
 
 const AssigneeSelect = ({issue}: { issue: Issue }) => {
-  const {data: users, error, isLoading} = useQuery<User[]>({
-    queryKey: ['users'],
-    queryFn: () => axios.get('/api/users').then(res => res.data),
-    staleTime: 60 * 1000, // 60s
-    retry: 3
-  });
+  const {data: users, error, isLoading} = useUsers();
   if (isLoading) return <Skeleton highlightColor="gray" height="1.8rem" baseColor="#303030"/>
 
   if (error) return null;
 
-  return (
-      <>
-        <Select.Root
-            defaultValue={issue.assignedToUserId || null!}
-            onValueChange={(userId) => {
+  const assignIssue = (userId: string) => {
               axios.patch('/api/issues/' + issue.id,
                   {assignedToUserId: userId || null})
                   .catch(() => {
@@ -34,7 +25,12 @@ const AssigneeSelect = ({issue}: { issue: Issue }) => {
                       },
                     })
                   })
-            }}>
+            }
+  return (
+      <>
+        <Select.Root
+            defaultValue={issue.assignedToUserId || null!}
+            onValueChange={assignIssue}>
           <Select.Trigger placeholder="Assign..."/>
           <Select.Content>
             <Select.Group>
@@ -51,5 +47,12 @@ const AssigneeSelect = ({issue}: { issue: Issue }) => {
 
   );
 };
+
+const useUsers = () => useQuery<User[]>({
+    queryKey: ['users'],
+    queryFn: () => axios.get('/api/users').then(res => res.data),
+    staleTime: 60000 * 1000, // 60s
+    retry: 3
+  });
 
 export default AssigneeSelect;

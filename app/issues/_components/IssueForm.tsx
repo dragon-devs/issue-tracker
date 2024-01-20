@@ -1,11 +1,10 @@
 'use client'
-import {Button, Callout, TextField} from "@radix-ui/themes";
+import {Button, TextField} from "@radix-ui/themes";
 import "easymde/dist/easymde.min.css";
 import {Controller, useForm} from "react-hook-form";
 import axios from "axios";
 import {useRouter} from "next/navigation";
 import {useState} from "react";
-import {MdCheckCircle, MdError} from "react-icons/md";
 import {zodResolver} from "@hookform/resolvers/zod";
 import {issueSchema} from "@/app/validationSchema";
 import {z} from 'zod';
@@ -13,7 +12,7 @@ import ErrorMessage from "@/app/components/ErrorMessage";
 import Spinner from "@/app/components/Spinner";
 import {Issue} from "@prisma/client";
 import SimpleMDE from 'react-simplemde-editor';
-import toast,{Toaster} from "react-hot-toast";
+import toast, {Toaster} from "react-hot-toast";
 
 // getting the values from the zod validation
 type IssueFormData = z.infer<typeof issueSchema>
@@ -35,9 +34,8 @@ const IssueForm = ({issue}: { issue?: Issue }) => {
         toast.success('issue is successfully updated.');
       } else{
         await axios.post('/api/issues', data);
-        localStorage.setItem('successMessage', 'Issue is successfully created.');
+        toast.success('issue is successfully created.');
       }
-
       router.push('/issues/list')
       router.refresh()
       setIsSubmiting(false)
@@ -48,15 +46,6 @@ const IssueForm = ({issue}: { issue?: Issue }) => {
   })
   return (
       <div className="max-w-xl ">
-        {success && <Callout.Root color="green" className="mb-5">
-          <Callout.Icon><MdCheckCircle/></Callout.Icon>
-          <Callout.Text>{success}</Callout.Text>
-        </Callout.Root>}
-
-        {error && <Callout.Root color="red" className="mb-5">
-          <Callout.Icon><MdError/></Callout.Icon>
-          <Callout.Text>{error}</Callout.Text>
-        </Callout.Root>}
         <form
             className="space-y-3"
             onSubmit={onSubmit}
