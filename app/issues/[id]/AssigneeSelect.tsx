@@ -6,8 +6,10 @@ import axios from "axios";
 import {useQuery} from "@tanstack/react-query";
 import {Skeleton} from "@/app/components";
 import toast, {Toaster} from "react-hot-toast";
+import {useRouter} from "next/navigation";
 
 const AssigneeSelect = ({issue}: { issue: Issue }) => {
+  const router = useRouter()
   const {data: users, error, isLoading} = useUsers();
   if (isLoading) return <Skeleton highlightColor="gray" height="1.8rem" baseColor="#303030"/>
 
@@ -24,7 +26,7 @@ const AssigneeSelect = ({issue}: { issue: Issue }) => {
                         color: '#fff',
                       },
                     })
-                  })
+                  });
             }
   return (
       <>
