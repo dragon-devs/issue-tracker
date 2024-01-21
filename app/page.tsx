@@ -1,12 +1,11 @@
 import {Button, Flex} from "@radix-ui/themes";
 import Pagination from "@/app/components/Pagination";
+import LatestIssues from "@/app/LatestIssues";
 
 
-export default function Home({ searchParams} : {searchParams: { page: string}}) {
+export default function Home() {
 
   return (
-      <Flex>
-        <Pagination itemCount={100} pageSize={10} currentPage={parseInt(searchParams.page)}/>
-      </Flex>
+        <LatestIssues />
   )
 }
