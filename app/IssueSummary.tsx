@@ -9,16 +9,19 @@ interface Props {
   closed: number,
 }
 
-const IssueSummary = ({open, inProgress, closed}: Props) => {
+const IssueSummary = ({ open, inProgress, closed }: Props) => {
+  const totalIssues = open + inProgress + closed;
+
   const containers: {
     label: string;
     value: number;
-    status: Status;
+    status: Status | "default";
   }[] = [
-    {label: 'Open Issues', value: open, status: 'OPEN'},
-    {label: 'In-progress Issues', value: inProgress, status: 'IN_PROGRESS'},
-    {label: 'Closed Issues', value: closed, status: 'CLOSED'},
-  ]
+    { label: 'All Issues', value: totalIssues, status: "default"},
+    { label: 'Open Issues', value: open, status: 'OPEN' },
+    { label: 'In-progress Issues', value: inProgress, status: 'IN_PROGRESS' },
+    { label: 'Closed Issues', value: closed, status: 'CLOSED' },
+  ];
   return (
       <Flex gap="4">
         {containers.map(container => (

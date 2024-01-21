@@ -1,5 +1,5 @@
 import prisma from "@/prisma/client";
-import React from 'react';
+import React,{cache} from 'react';
 import {notFound} from "next/navigation";
 import {Box, Flex, Grid} from "@radix-ui/themes";
 import EditIssueButton from "@/app/issues/[id]/EditIssueButton";
@@ -13,7 +13,7 @@ interface Props {
   params: { id: string }
 }
 
-cache((issueId: number) => prisma.issue.findUnique({where: {id: parseInt(params.id)}}));
+const fetchUser = cache((issueId: number) => prisma.issue.findUnique({where: {id: parseInt(issueId)}}));
 const IssueDetailPage = async ({params}: Props) => {
   const session = await getServerSession(authOptions);
   const issue = await fetchUser(parseInt(params.id))
