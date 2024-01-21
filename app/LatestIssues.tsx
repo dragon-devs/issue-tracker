@@ -14,15 +14,15 @@ const LatestIssues = async () => {
   });
 
   return (
-      <Card>
-        <Heading size="4" mb="5">Latest Issues</Heading>
-        <Table.Root>
+      <Flex direction="column">
+        <Heading size="5" mb="6">Latest Issues</Heading>
+        <Table.Root variant="surface">
           <Table.Body>
             {issues.map(issue => (
-                <Table.Row key={issue.id}>
+                <Table.Row key={issue.id} className="border-none">
                   <Table.Cell>
                     <Flex justify="between" align="center">
-                      <Flex direction="column" gap="2" align="start">
+                      <Flex direction="column" className="p-0.5" gap="2" align="start">
                         <Link href={`issues/${issue.id}`}>{issue.title}</Link>
                         <IssueStatusBadge status={issue.status}/>
                       </Flex>
@@ -40,8 +40,7 @@ const LatestIssues = async () => {
             ))}
           </Table.Body>
         </Table.Root>
-      </Card>
-
+      </Flex>
   );
 };
 
