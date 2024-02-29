@@ -6,7 +6,7 @@ generator client {
 }
 
 datasource db {
-  provider = "mysql"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
@@ -15,7 +15,7 @@ model Issue {
   title            String   @db.VarChar(255)
   description      String   @db.Text
   status           Status   @default(OPEN)
-  createdAt        DateTime @default(now())
+  createdAt        DateTime @default(now()) @map(name: "created_at")
   updatedAt        DateTime @updatedAt
   assignedToUserId String?  @db.VarChar(255)
   assignedToUser   User?    @relation(fields: [assignedToUserId], references: [id])
