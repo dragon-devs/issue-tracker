@@ -1,22 +1,25 @@
 # Issue Tracker
 
-Issue Tracker is a fully authenticated web application implemented with Sentry for issue tracking. It is responsive and optimized for both mobile and desktop use. The application allows users to create, update, delete, and assign issues to a user. It features a detailed issues page, where users can view all relevant information about each issue. Additionally, users can filter issues by status and utilize a pagination system for easier navigation.
+Issue Tracker is a TypeScript-based web application built with Next.js and Prisma. It features seamless issue tracking, user authentication, and responsive design for versatile usability.
 
 ## Key Features
 
-- **Authentication:** Fully authenticated system for secure user access.
-- **Sentry Integration:** Implementation of Sentry for effective issue tracking and error monitoring.
-- **Responsive Design:** Optimized for both mobile and desktop devices, ensuring a seamless user experience across all platforms.
-- **Issue Management:** Create, update, delete, and assign issues with ease.
-- **Detailed Issues Page:** View comprehensive details about each issue, including status, assignee, and more.
-- **Filtering and Pagination:** Filter issues by status and navigate through them efficiently using a pagination system.
-- **Dashboard:** Access a dashboard to see the latest issues and detailed issue information, presented with interactive charts.
+- **Issue Management:** Create, update, delete, and assign issues effortlessly.
+- **User Authentication:** Fully authenticated system ensures secure access.
+- **Responsive Design:** Optimized for both mobile and desktop devices.
+- **Filtering and Pagination:** Easily filter issues by status and navigate with pagination.
+- **Dashboard:** Access a dashboard with interactive charts to visualize issue data.
 
+## Getting Started
+
+To get started with Issue Tracker, follow these steps:
+
+1. **Clone the repository:**
 ## Technologies Used
 
 - Frontend: React.js, Next.js, Radix-ui
 - Backend: Next14 routers, Typescript
-- Database: Mysql, Prisma
+- Database: Postgresql, Prisma
 - Sentry: Error tracking and monitoring
 
 ## Getting Started
