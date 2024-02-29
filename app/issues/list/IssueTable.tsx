@@ -12,6 +12,7 @@ export interface IssueQuery {
   page: string;
 }
 
+
 interface Props {
   searchParams: IssueQuery,
   issues: Issue[]

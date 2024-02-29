@@ -17,6 +17,7 @@ const fetchUser = cache((issueId: number) => prisma.issue.findUnique({where: {id
 const IssueDetailPage = async ({params}: Props) => {
   const session = await getServerSession(authOptions);
   const issue = await fetchUser(parseInt(params.id))
+
   if (!issue)
     return notFound();
 

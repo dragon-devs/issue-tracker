@@ -22,8 +22,6 @@ const IssueForm = ({issue}: { issue?: Issue }) => {
   const {register, control, handleSubmit, formState: {errors}} = useForm<IssueFormData>({
     resolver: zodResolver(issueSchema)
   });
-  const [error, setError] = useState('');
-  const [success, setSuccess] = useState('');
   const [isSubmiting, setIsSubmiting] = useState(false);
 
   const onSubmit = handleSubmit(async (data) => {
@@ -43,7 +41,8 @@ const IssueForm = ({issue}: { issue?: Issue }) => {
       setIsSubmiting(false)
       toast.error('An unexpected error occurred.');
     }
-  })
+  });
+
   return (
       <div className="max-w-xl ">
         <form

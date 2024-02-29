@@ -25,7 +25,7 @@ export default function RootLayout({children}: Readonly<{ children: React.ReactN
       <body className={`${inter.variable}`}>
       <QueryClientProvider>
         <AuthProvider>
-        <Theme appearance="dark" accentColor="iris">
+        <Theme appearance="dark" grayColor="slate" radius="large">
           <NavBar/>
           <main className="p-5">
             <Container>{children}</Container>

@@ -13,7 +13,6 @@ const AssigneeSelect = ({issue}: { issue: Issue }) => {
   const {data: users, error, isLoading} = useUsers();
   if (isLoading) return <Skeleton highlightColor="gray" height="1.8rem" baseColor="#303030"/>
 
-  if (error) return null;
 
   const assignIssue = (userId: string) => {
               axios.patch('/api/issues/' + issue.id,

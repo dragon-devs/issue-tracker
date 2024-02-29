@@ -11,9 +11,7 @@ const IssueForm = dynamic(
 )
 const NewIssuePage = () => {
   return (
-      <>
-        <IssueForm />
-      </>
+      <IssueForm/>
   );
 };
 

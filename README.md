@@ -1,36 +1,72 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Issue Tracker
+
+Issue Tracker is a fully authenticated web application implemented with Sentry for issue tracking. It is responsive and optimized for both mobile and desktop use. The application allows users to create, update, delete, and assign issues to a user. It features a detailed issues page, where users can view all relevant information about each issue. Additionally, users can filter issues by status and utilize a pagination system for easier navigation.
+
+## Key Features
+
+- **Authentication:** Fully authenticated system for secure user access.
+- **Sentry Integration:** Implementation of Sentry for effective issue tracking and error monitoring.
+- **Responsive Design:** Optimized for both mobile and desktop devices, ensuring a seamless user experience across all platforms.
+- **Issue Management:** Create, update, delete, and assign issues with ease.
+- **Detailed Issues Page:** View comprehensive details about each issue, including status, assignee, and more.
+- **Filtering and Pagination:** Filter issues by status and navigate through them efficiently using a pagination system.
+- **Dashboard:** Access a dashboard to see the latest issues and detailed issue information, presented with interactive charts.
+
+## Technologies Used
+
+- Frontend: React.js, Next.js, Radix-ui
+- Backend: Next14 routers, Typescript
+- Database: Mysql, Prisma
+- Sentry: Error tracking and monitoring
 
 ## Getting Started
 
-First, run the development server:
+To get started with Issue Tracker, follow these steps:
+
+1. **Clone the repository:**
+```bash
+git clone https://github.com/dragon-devs/issue-tracker.git
+```
+2. **Install dependencies:**
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+cd issue-tracker
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3. **Run migrations:**
+```bash
+npx prisma migrate dev
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+4. **Run the development server:**
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+```
+npm run dev
+```
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+6. **Access the application:**
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Visit [http://localhost:3000](http://localhost:3000) in your web browser.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Contributing
 
-## Deploy on Vercel
+Contributions to Issue Tracker are welcome! If you'd like to contribute, please follow these guidelines:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Fork the repository and create your branch from `main`.
+- Make sure your code adheres to the established code style.
+- Test your changes thoroughly.
+- Submit a pull request, describing the changes you've made.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## License
+
+Issue Tracker is licensed under the [MIT License](LICENSE).
+
+## Support
+
+For support, bug reports, or feature requests, please [open an issue](https://github.com/dragon-devs/issue-tracker/issues).
+
+## About
+
+Issue Tracker is developed and maintained by [dragon-devs](https://dragon-devs.vercel.app).
